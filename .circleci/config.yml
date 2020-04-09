@@ -11,7 +11,7 @@ jobs:
           steps:
             - run: npm install
             - run: npm test
-      - store_artifact:
+      - store_artifacts:
           path: dist
 
       

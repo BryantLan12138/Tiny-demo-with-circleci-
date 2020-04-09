@@ -19,11 +19,10 @@ workflows:
     build-and-test:
       jobs:
         - build-and-test
-        
-    pack:
-      requires:
-        - build-and-test
-      filters:
-        branches:
-          only:
-            - master
+        - pack:
+            requires:
+              - build-and-test
+            filters:
+              branches:
+                only:
+                  - master

@@ -11,11 +11,18 @@ jobs:
           steps:
             - run: npm install
             - run: npm test
-      - store_artifacts:
+      - store_artifacts: 
           path: dist
 
       
 workflows:
-    build-and-test:
+    build-and-test-and pack:
       jobs:
         - build-and-test
+        - pack:
+            requires: 
+              - build
+            filters:
+              branches:
+                only:
+                  - master

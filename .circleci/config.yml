@@ -16,13 +16,14 @@ jobs:
 
       
 workflows:
-    build-and-test-and pack:
+    build-and-test:
       jobs:
         - build-and-test
-        - pack:
-            requires: 
-              - build
-            filters:
-              branches:
-                only:
-                  - master
+        
+    pack:
+      requires:
+        - build-and-test
+      filters:
+        branches:
+          only:
+            - master

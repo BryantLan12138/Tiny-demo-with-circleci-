@@ -2,24 +2,24 @@ version: 2.1
 orbs:
   node: circleci/node@1.1.6
 jobs:
-  build-and-test:
-    executor:
-      name: node/default
-    steps:
-      - checkout
-      - node/with-cache:
-          steps:
-            - run: npm install
-            - run: npm test
+  # build-and-test:
+  #   executor:
+  #     name: node/default
+  #   steps:
+  #     - checkout
+  #     - node/with-cache:
+  #         steps:
+  #           - run: npm install
+  #           - run: npm test
   unit-test:
     executor:
       name: node/default
     steps:
       - run: 
-          command: npm install mocha
-      - run: 
-          command: npm run test-unit 
-          working_directory: test/unit  
+          command: |
+            npm install mocha 
+            npm run test-unit 
+            
 
  
 
@@ -30,7 +30,7 @@ jobs:
 workflows:
     build-and-test:
       jobs:
-        - build-and-test
+        # - build-and-test
         - unit-test:
             requires:
               - build-and-test

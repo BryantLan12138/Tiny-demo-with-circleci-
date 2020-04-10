@@ -12,6 +12,8 @@ jobs:
             - run: npm install
             - run: npm test
   unit-test:
+    executor:
+      name: node/default
     steps:
       - run: npm install mocha
       - run: npm run test-unit   

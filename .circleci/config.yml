@@ -15,8 +15,11 @@ jobs:
     executor:
       name: node/default
     steps:
-      - run: npm install mocha
-      - run: npm run test-unit   
+      - run: 
+          command: npm install mocha
+      - run: 
+          command: npm run test-unit 
+          working_directory: test/unit  
 
  
 

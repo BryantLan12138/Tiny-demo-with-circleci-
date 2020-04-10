@@ -11,28 +11,21 @@ jobs:
           steps:
             - run: npm install
             - run: npm test
-      
+  unit-test:
+    steps:
+      - run: npm install mocha
+      - run: npm run test-unit   
 
   pack:
-    executor:
-      name: node/default
-    steps:
+    step:
       - checkout
-      - node/with-cache:
-        steps:
-          - run: npm pack 
-      - store_artifacts: 
-        path: dist
+
+
+    
 
       
 workflows:
     build-and-test:
       jobs:
         - build-and-test
-        - pack:
-            requires:
-              - build-and-test
-            filters:
-              branches:
-                only:
-                  - master
+        

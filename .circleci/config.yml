@@ -1,20 +1,32 @@
 version: 2.1
 orbs:
   node: circleci/node@1.1.6
+  commands:
+    install_deps:
+      steps:
+        - run:
+            name: Install npm dependencies
+            command:
+              npm install
+
+
 jobs:
   build-and-test:
     executor:
       name: node/default
     steps:
       - checkout
+      - install_deps
       - node/with-cache:
           steps:
-            - run: npm install
             - run: npm test
   unit-test:
-    executor:
-      name: node/default
+    docker:
+      image: assignment1:latest
+      
     steps:
+      - checkout
+      - install_deps
       - run: 
           name: run unit-test
           command: |

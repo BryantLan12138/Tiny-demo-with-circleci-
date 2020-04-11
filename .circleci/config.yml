@@ -42,6 +42,17 @@ jobs:
           command: |
             npm install eslint --save-dev
             npm run test-lint  
+  code-coverage:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - checkout
+      - install_deps
+      - run:
+          name: run code-coverage
+          command: |
+            npm install --save-dev nyc 
+            npm run test-coverage
            
       
 workflows:
@@ -54,4 +65,7 @@ workflows:
         - eslint-test:
             requires:
               - build-and-test
+        - code-coverage:
+            requires:
+              - unit-test
         

@@ -6,7 +6,7 @@ orbs:
       steps:
         - run:
             name: Install npm dependencies
-            command:
+            command: |
               npm install
 
 
@@ -32,13 +32,6 @@ jobs:
             npm install mocha 
             npm run test-unit 
            
-            
-
- 
-
-
-    
-
       
 workflows:
     build-and-test:

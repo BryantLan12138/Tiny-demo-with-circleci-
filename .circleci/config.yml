@@ -22,7 +22,7 @@ jobs:
             - run: npm test
   unit-test:
     docker:
-      image: assignment1:latest
+      - image: assignment1:latest
     steps:
       - checkout
       - install_deps

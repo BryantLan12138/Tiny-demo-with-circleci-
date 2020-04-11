@@ -5,7 +5,7 @@
   "scripts": {
     "start": "cross-env DEBUG=express-sequelize node ./bin/www",
     "start:prod": "cross-env NODE_ENV=production DEBUG=express-sequelize node ./bin/www",
-    "test-lint": "",
+    "test-lint": "./node_modules/.bin/eslint ./",
     "test-unit": "cross-env NODE_ENV=unit mocha test/unit",
     "test-units": "mocha",
     "test-coverage": "cross-env NODE_ENV=unit nyc report",

@@ -31,6 +31,17 @@ jobs:
           command: |
             npm install mocha 
             npm run test-unit 
+  eslint-test:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - checkout
+      - install_deps
+      - run:
+          name: run eslint-test
+          command: |
+            npm install eslint --save-dev
+            npm run test-lint  
            
       
 workflows:

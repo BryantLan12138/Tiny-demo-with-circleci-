@@ -1,13 +1,13 @@
 version: 2.1
 orbs:
   node: circleci/node@1.1.6
-  commands:
-    install_deps:
-      steps:
-        - run:
-            name: Install npm dependencies
-            command: |
-              npm install
+commands:
+  install_deps:
+    steps:
+      - run:
+          name: Install npm dependencies
+          command: |
+            npm install
 
 
 jobs:

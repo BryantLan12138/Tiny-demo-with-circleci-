@@ -51,4 +51,7 @@ workflows:
         - unit-test:
             requires:
               - build-and-test
+        - eslint-test:
+            requires:
+              - build-and-test
         

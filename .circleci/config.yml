@@ -63,7 +63,7 @@ jobs:
           name: run pack
           command: |
             npm pack 
-      - store-artifacts:
+      - store_artifacts:
           path: dist
            
       

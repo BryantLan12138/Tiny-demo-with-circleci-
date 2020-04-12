@@ -53,6 +53,17 @@ jobs:
           command: |
             npm install --save-dev nyc 
             npm run test-coverage
+  pack:
+    de-coverage:
+      docker:
+        - image: circleci/node:lts
+      steps:
+        - checkout
+        - install_deps
+        - run:
+            name: run packe
+            command: |
+            npm pack 
            
       
 workflows:
@@ -68,4 +79,6 @@ workflows:
         - code-coverage:
             requires:
               - unit-test
-        
+        - pack:
+            requires:
+              - code-coverage

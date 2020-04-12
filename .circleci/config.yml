@@ -65,6 +65,7 @@ jobs:
             npm pack 
             mkdir dist 
             mv rmit-app-0.0.0.tgz ./dist
+            cd dist
             tar xvzf rmit-app-0.0.0.tgz
       - store_artifacts:
           path: dist

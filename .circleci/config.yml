@@ -69,7 +69,7 @@ jobs:
             tar xvzf rmit-app-0.0.0.tgz
       - store_artifacts:
           path: dist
-  Integration-test:
+  integration-test:
     docker:
       - image: circleci/node:lts
       - image: postgres:latest

@@ -63,6 +63,8 @@ jobs:
           name: run pack
           command: |
             npm pack 
+      - store-artifact:
+          path: dist
            
       
 workflows:

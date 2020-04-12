@@ -1,0 +1,90 @@
+version: 2.1
+orbs:
+  node: circleci/node@1.1.6
+commands:
+  install_deps:
+    steps:
+      - run:
+          name: Install npm dependencies
+          command: |
+            npm install
+
+
+jobs:
+  build-and-test:
+    executor:
+      name: node/default
+    steps:
+      - checkout
+      - install_deps
+      - node/with-cache:
+          steps:
+            - run: npm test
+  unit-test:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - checkout
+      - install_deps
+      - run: 
+          name: run unit-test
+          command: |
+            npm install mocha 
+            npm run test-unit 
+  eslint-test:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - checkout
+      - install_deps
+      - run:
+          name: run eslint-test
+          command: |
+            npm install eslint --save-dev
+            npm run test-lint  
+  code-coverage:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - checkout
+      - install_deps
+      - run:
+          name: run code-coverage
+          command: |
+            npm install --save-dev nyc 
+            npm run test-coverage
+  pack:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - checkout
+      - install_deps
+      - run:
+          name: run pack
+          command: |
+            npm pack 
+      - store_artifacts:
+          mkdir dist 
+          path: dist
+           
+      
+workflows:
+    build-and-test:
+      jobs:
+        - build-and-test
+        - unit-test:
+            requires:
+              - build-and-test
+        - eslint-test:
+            requires:
+              - build-and-test
+        - code-coverage:
+            requires:
+              - unit-test
+        - pack:
+            requires:
+              - code-coverage
+            filters:
+              branches:
+                only:
+                  - master

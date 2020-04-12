@@ -63,7 +63,7 @@ jobs:
         - run:
             name: run packe
             command: |
-            npm pack 
+              npm pack 
            
       
 workflows:

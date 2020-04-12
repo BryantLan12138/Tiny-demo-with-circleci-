@@ -81,3 +81,7 @@ workflows:
         - pack:
             requires:
               - code-coverage
+            filters:
+              branches:
+                only:
+                  - master

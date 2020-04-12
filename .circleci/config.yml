@@ -60,7 +60,7 @@ jobs:
       - checkout
       - install_deps
       - run:
-          name: run packe
+          name: run pack
           command: |
             npm pack 
            

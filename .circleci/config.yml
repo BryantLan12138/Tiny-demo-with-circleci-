@@ -32,7 +32,7 @@ jobs:
             npm install mocha --save-dev
             mkdir unit_test_result
             npm run test-unit  
-            mv test-result.xml ./unit_test_result
+            mv test-results.xml ./unit_test_result
       - store_test_results:
           path: ./unit_test_result
       - store_artifacts:

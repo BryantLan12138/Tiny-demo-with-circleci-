@@ -84,12 +84,12 @@ jobs:
     docker:
       - image: circleci/node:lts
       - image: postgres:latest
-          environment: 
-            POSTGRES_DB: "servian"
-            DB_USERNAME: postgres 
-            DB_PASSWORD: password 
-            DB_NAME: servian 
-            DB_HOSTNAME: localhost
+        environment: 
+          POSTGRES_DB: "servian"
+          DB_USERNAME: postgres 
+          DB_PASSWORD: password 
+          DB_NAME: servian 
+          DB_HOSTNAME: localhost
     steps:
       - checkout
       - install_deps

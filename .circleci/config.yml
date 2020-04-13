@@ -84,13 +84,23 @@ jobs:
     docker:
       - image: circleci/node:lts
       - image: postgres:latest
+        enviornment:
+          POSTGRES_DB: "servian"
+          DB_USERNAME: postgres 
+          DB_PASSWORD: password 
+          DB_NAME: servian 
+          DB_HOSTNAME: localhost
     steps:
       - checkout
       - install_deps
       - run:
           name: integration test
           command: |
-            npm run test-integration 
+            npm run test-integration
+            mkdir integration_test_result
+            mv test-results.xml ./integration_test_result
+      - store_test_results:
+          path: ./integration_test_result
 
            
       

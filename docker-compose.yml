@@ -5,7 +5,6 @@ services:
     image: postgres:latest
     environment: 
       POSTGRES_DB: "servian"
-      POSTGRES_HOST_AUTH_METHOD: "trust"
       DB_USERNAME: postgres 
       DB_PASSWORD: password 
       DB_NAME: servian 

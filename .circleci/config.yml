@@ -59,9 +59,11 @@ jobs:
           command: |
             npm install --save-dev nyc 
             npm run test-coverage
-            mkdir code_coverage_results
-      - store_test_results:
-          path: ./code_coverage_results
+      - run:
+          name: Validate code coverage
+          command: |
+            bash <(curl -s https://codecov.io/bash)
+
   pack:
     docker:
       - image: circleci/node:lts

@@ -126,4 +126,4 @@ workflows:
                   - master
         - integration-test:
             requires:
-              - pack
+              - build-and-test

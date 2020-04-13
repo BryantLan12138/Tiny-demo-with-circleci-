@@ -8,8 +8,6 @@ commands:
           name: Install npm dependencies
           command: |
             npm install
-
-
 jobs:
   build-and-test:
     executor:
@@ -34,8 +32,6 @@ jobs:
             npm run test-unit  
             mv test-results.xml ./unit_test_result
       - store_test_results:
-          path: ./unit_test_result
-      - store_artifacts:
           path: ./unit_test_result 
   eslint-test:
     docker:
@@ -47,7 +43,11 @@ jobs:
           name: run eslint-test
           command: |
             npm install eslint --save-dev
-            npm run test-lint  
+            npm run test-lint 
+            mkdir eslint_test_result
+      - store_test_results:
+          path: ./eslint_test_result 
+      
   code-coverage:
     docker:
       - image: circleci/node:lts
@@ -59,6 +59,9 @@ jobs:
           command: |
             npm install --save-dev nyc 
             npm run test-coverage
+            mkdir code_coverage_results
+      - store_test_results:
+          path: ./code_coverage_results
   pack:
     docker:
       - image: circleci/node:lts

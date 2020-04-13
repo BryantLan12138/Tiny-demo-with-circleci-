@@ -35,7 +35,7 @@ jobs:
           enviornment:
             Mocha_FILE: ~/unit_test_result/test-results.xml 
           when: always
-      - store_test_result:
+      - store_test_results:
           path: /unit_test_result
       - store_artifacts:
           path: /unit_test_result 

@@ -171,3 +171,6 @@ workflows:
         - integration-test:
             requires:
               - build-and-test
+        - e2e:
+            requires: 
+              - integration-test

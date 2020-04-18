@@ -3,5 +3,6 @@ module.exports = {
   rootDir: ".qawolf",
   testTimeout: 60000,
   useTypeScript: false,
-  watch: true  
+  QAW_HEADLESS: true,
+  watch: true
 }

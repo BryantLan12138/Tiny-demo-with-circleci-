@@ -129,14 +129,14 @@ jobs:
             POSTGRES_PASSWORD: 'password' 
             POSTGRES_NAME: 'servian' 
             POSTGRES_HOSTNAME: 'localhost'
-    steps:
-      - checkout
-      - install_deps
-      - run:
-          name: Run e2e test
-          command: |  
-            chmod a+x e2e.sh
-            ./e2e.sh
+      steps:
+        - checkout
+        - install_deps
+        - run:
+            name: Run e2e test
+            command: |  
+              chmod a+x e2e.sh
+              ./e2e.sh
 
 
            

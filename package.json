@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "cross-env DEBUG=express-sequelize node ./bin/www",
-    "start:prod": "cross-env NODE_ENV=production DEBUG=express-sequelize node ./bin/www",
+    "start:prod": "cross-env DB_USERNAME=postgres DB_PASSWORD=password DB_NAME=servian NODE_ENV=production  DEBUG=express-sequelize node ./bin/www",
     "test-lint": "./node_modules/.bin/eslint ./",
     "test-unit": "cross-env NODE_ENV=unit mocha test/unit --reporter mocha-junit-reporter",
     "test-units": "mocha",

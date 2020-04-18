@@ -127,8 +127,7 @@ jobs:
           POSTGRES_DB: 'servian'
           POSTGRES_USER: 'postgres' 
           POSTGRES_PASSWORD: 'password' 
-          POSTGRES_NAME: 'servian' 
-          POSTGRES_HOSTNAME: 'localhost'
+          
     steps:
       - checkout
       - install_deps

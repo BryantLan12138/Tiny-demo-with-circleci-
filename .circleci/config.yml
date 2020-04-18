@@ -87,7 +87,7 @@ jobs:
     steps:
       - checkout
       - install_deps
-      - setup_remote-docker:
+      - setup_remote_docker:
           docker_layer_catching: false
       - run:
           name: pack with docker image

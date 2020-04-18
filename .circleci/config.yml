@@ -118,6 +118,26 @@ jobs:
             mv test-results.xml ./integration_test_result
       - store_test_results:
           path: ./integration_test_result
+    
+    e2e:
+      docker:
+        - image: circleci/node:lts-browsers
+        - image: postgres:10.7
+        environment:
+          POSTGRES_DB: 'servian'
+          POSTGRES_USER: 'postgres' 
+          POSTGRES_PASSWORD: 'password' 
+          POSTGRES_NAME: 'servian' 
+          POSTGRES_HOSTNAME: 'localhost'
+      steps:
+        - checkout
+        - install_deps
+        - run:
+            name: Run e2e test
+            command: |  
+              chmod a+x e2e.sh
+              ./e2e.sh
+
 
            
       

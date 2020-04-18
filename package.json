@@ -11,7 +11,7 @@
     "test-coverage": "cross-env NODE_ENV=unit nyc --reporter=lcovonly mocha test/unit",
     "report-coverage": "nyc --reporter=lcov mocha test/unit ",
     "test-integration": "cross-env DB_USERNAME=postgres DB_PASSWORD=password DB_NAME=servian DB_HOSTNAME=localhost NODE_ENV=integration mocha test/integration --reporter mocha-junit-reporter",
-    "test-e2e": "cross-env NODE_ENV=e2e DB_USERNAME=postgres DB_PASSWORD=password DB_NAME=servian QAW_HEADLESS:true npx qawolf test"
+    "test-e2e": "cross-env NODE_ENV=e2e DB_USERNAME=postgres DB_PASSWORD=password DB_NAME=servian QAW_HEADLESS=true npx qawolf test"
   },
   "dependencies": {
     "bluebird": "^3.5.1",

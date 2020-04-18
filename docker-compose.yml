@@ -5,10 +5,10 @@ services:
     image: postgres:latest
     environment: 
       POSTGRES_DB: "servian"
-      DB_USERNAME: postgres 
-      DB_PASSWORD: password 
-      DB_NAME: servian 
-      DB_HOSTNAME: localhost
+      POSTGRES_USERNAME: postgres 
+      POSTGRES_PASSWORD: password 
+      POSTGRES_NAME: servian 
+      POSTGRES_HOSTNAME: localhost
     restart: always
     ports:
       - 5432:5432    

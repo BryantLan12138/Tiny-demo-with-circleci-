@@ -80,6 +80,23 @@ jobs:
             tar xvzf rmit-app-0.0.0.tgz
       - store_artifacts:
           path: dist
+  
+  pack2:
+    docker: 
+      - image: circleci/node:lts
+    steps:
+      - checkout
+      - install_deps
+      - setup_remote-docker:
+          docker_layer_catching: false
+      - run:
+          name: pack with docker image
+          command: |
+            docker build -t rmit-app:0.0.0 .
+            docker save rmit-app:0.0.0 >rmit-app.tar
+      - store_artifacts:
+          path: rmit-app.tar
+
   integration-test:
     docker:
       - image: circleci/node:lts
@@ -118,6 +135,13 @@ workflows:
             requires:
               - unit-test
         - pack:
+            requires:
+              - code-coverage
+            filters:
+              branches:
+                only:
+                  - master
+        - pack2:
             requires:
               - code-coverage
             filters:
